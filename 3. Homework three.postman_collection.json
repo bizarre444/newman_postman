@@ -1,0 +1,2462 @@
+{
+	"info": {
+		"_postman_id": "3b4ca88f-18af-40f6-9143-9b109ea9afba",
+		"name": "3. Homework three",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "10 Magic Search",
+			"item": [
+				{
+					"name": "10 MagicSearch default",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//query for search\r",
+									"let query_array = [\"А\", \"Б\", \"В\", \"Г\", \"Д\", \"Е\", \"Ж\", \"З\", \"И\", \"К\", \"Л\", \"М\", \"Н\", \"О\", \"П\", \"Р\", \"С\", \"Т\", \"У\", \"Ю\", \"Я\"];\r",
+									"// let name_array_old = [\"Анна\", \"Иван\", \"Кирилл\", \"Саша\", \"Карина\", \"Матвей\"];\r",
+									"let query = query_array[Math.floor(Math.random() * query_array.length)];\r",
+									"pm.environment.set(\"query\", query);\r",
+									"console.log(query);\r",
+									"\r",
+									"//partyType for search\r",
+									"let partyType_array = [\"USER\", \"COMPANY\"];\r",
+									"let partyType = partyType_array[Math.floor(Math.random() * partyType_array.length)];\r",
+									"pm.environment.set(\"partyType\", partyType);\r",
+									"console.log(partyType);\r",
+									"\r",
+									"//fullSimilarity\r",
+									"let fullSimilarity_array = [\"True\", \"False\"];\r",
+									"let fullSimilarity = fullSimilarity_array[Math.floor(Math.random() * fullSimilarity_array.length)];\r",
+									"pm.environment.set(\"fullSimilarity\", fullSimilarity);\r",
+									"console.log(fullSimilarity);\r",
+									"\r",
+									"//include\r",
+									"let include_array =  [\"ALL\", \"USER\", \"COMPANY\", \"TASK\", \"WHY\"];\r",
+									"let include = include_array[Math.floor(Math.random() * include_array.length)];\r",
+									"pm.environment.set(\"include\", include);\r",
+									"console.log(include);\r",
+									"\r",
+									"//maxcount\r",
+									"let maxcount = Math.floor((Math.random()*29) + 1);\r",
+									"pm.environment.set(\"maxcount\", maxcount);\r",
+									"console.log(maxcount);\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//parse JSON\r",
+									"let jsonResponse = pm.response.json();\r",
+									"console.log(jsonResponse);\r",
+									"let response_count = jsonResponse.results;\r",
+									"\r",
+									"\r",
+									"//max Count\r",
+									"let maxcount = pm.variables.get(\"maxcount\");\r",
+									"\r",
+									"//response is json\r",
+									"pm.test(\"The body of the response is a valid JSON\", function () {\r",
+									"    pm.response.to.be.json;\r",
+									"});\r",
+									"\r",
+									"//status code is ok\r",
+									"pm.test(\"Status code is ok\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 202, 230, 231, 232, 233, 234, 235]);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "query",
+									"value": "{{query}}",
+									"type": "text"
+								},
+								{
+									"key": "partyType",
+									"value": "{{partyType}}",
+									"type": "text"
+								},
+								{
+									"key": "fullSimilarity",
+									"value": "{{fullSimilarity}}",
+									"type": "text"
+								},
+								{
+									"key": "include",
+									"value": "{{include}}",
+									"type": "text"
+								},
+								{
+									"key": "maxCount",
+									"value": "{{maxCount}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/rest/magicsearch",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"rest",
+								"magicsearch"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "1 response 230",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//query for search\r",
+									"let query_array = [\"fffffffffffffffffffff\"];\r",
+									"// let name_array_old = [\"Анна\", \"Иван\", \"Кирилл\", \"Саша\", \"Карина\", \"Матвей\"];\r",
+									"let query = query_array[Math.floor(Math.random() * query_array.length)];\r",
+									"pm.environment.set(\"query\", query);\r",
+									"console.log(query);\r",
+									"\r",
+									"//partyType for search\r",
+									"let partyType_array = [\"USER\", \"COMPANY\"];\r",
+									"let partyType = partyType_array[Math.floor(Math.random() * partyType_array.length)];\r",
+									"pm.environment.set(\"partyType\", partyType);\r",
+									"console.log(partyType);\r",
+									"\r",
+									"//fullSimilarity\r",
+									"let fullSimilarity_array = [\"True\"];\r",
+									"let fullSimilarity = fullSimilarity_array[Math.floor(Math.random() * fullSimilarity_array.length)];\r",
+									"pm.environment.set(\"fullSimilarity\", fullSimilarity);\r",
+									"console.log(fullSimilarity);\r",
+									"\r",
+									"//include\r",
+									"let include_array =  [\"ALL\", \"USER\", \"COMPANY\", \"TASK\", \"WHY\"];\r",
+									"let include = include_array[Math.floor(Math.random() * include_array.length)];\r",
+									"pm.environment.set(\"include\", include);\r",
+									"console.log(include);\r",
+									"\r",
+									"//maxcount\r",
+									"let maxcount = Math.floor((Math.random()*29) + 1);\r",
+									"pm.environment.set(\"maxcount\", maxcount);\r",
+									"console.log(maxcount);\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//parse JSON\r",
+									"let jsonResponse = pm.response.json();\r",
+									"console.log(jsonResponse);\r",
+									"\r",
+									"//max Count\r",
+									"let maxcount = pm.variables.get(\"maxcount\");\r",
+									"\r",
+									"//response is json\r",
+									"pm.test(\"The body of the response is a valid JSON\", function () {\r",
+									"    pm.response.to.be.json;\r",
+									"});\r",
+									"\r",
+									"//status code is ok\r",
+									"pm.test(\"Status code is ok\", function () {\r",
+									"    pm.response.to.have.status(230);\r",
+									"});\r",
+									"\r",
+									"//max count\r",
+									"pm.test(\"Count is null\", function () {\r",
+									"    pm.expect(jsonResponse.foundCount).to.eql(0);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "query",
+									"value": "{{query}}",
+									"type": "text"
+								},
+								{
+									"key": "partyType",
+									"value": "{{partyType}}",
+									"type": "text"
+								},
+								{
+									"key": "fullSimilarity",
+									"value": "{{fullSimilarity}}",
+									"type": "text"
+								},
+								{
+									"key": "include",
+									"value": "{{include}}",
+									"type": "text"
+								},
+								{
+									"key": "maxCount",
+									"value": "{{maxCount}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/rest/magicsearch",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"rest",
+								"magicsearch"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2 response 456",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//query for search\r",
+									"let query_array = [\"fffffffffffffffffffff\"];\r",
+									"// let name_array_old = [\"Анна\", \"Иван\", \"Кирилл\", \"Саша\", \"Карина\", \"Матвей\"];\r",
+									"let query = query_array[Math.floor(Math.random() * query_array.length)];\r",
+									"pm.environment.set(\"query\", query);\r",
+									"console.log(query);\r",
+									"\r",
+									"//partyType for search\r",
+									"let partyType_array = [\"USER\", \"COMPANY\"];\r",
+									"let partyType = partyType_array[Math.floor(Math.random() * partyType_array.length)];\r",
+									"pm.environment.set(\"partyType\", partyType);\r",
+									"console.log(partyType);\r",
+									"\r",
+									"//fullSimilarity\r",
+									"let fullSimilarity_array = [\"True\"];\r",
+									"let fullSimilarity = fullSimilarity_array[Math.floor(Math.random() * fullSimilarity_array.length)];\r",
+									"pm.environment.set(\"fullSimilarity\", fullSimilarity);\r",
+									"console.log(fullSimilarity);\r",
+									"\r",
+									"//include\r",
+									"let include_array =  [\"ALL\", \"USER\", \"COMPANY\", \"TASK\", \"WHY\"];\r",
+									"let include = include_array[Math.floor(Math.random() * include_array.length)];\r",
+									"pm.environment.set(\"include\", include);\r",
+									"console.log(include);\r",
+									"\r",
+									"//maxcount\r",
+									"let maxcount = Math.floor((Math.random()*29) + 1);\r",
+									"pm.environment.set(\"maxcount\", maxcount);\r",
+									"console.log(maxcount);\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let jsonResponse = pm.response.json();\r",
+									"console.log(jsonResponse);\r",
+									"let message = \"Длина запроса не должна превышать 1000 символов\";\r",
+									"\r",
+									"//response is json\r",
+									"pm.test(\"The body of the response is a valid JSON\", function () {\r",
+									"    pm.response.to.be.json;\r",
+									"});\r",
+									"\r",
+									"//status code is 456\r",
+									"pm.test(\"Status code is 456\", function () {\r",
+									"    pm.response.to.have.status(456);\r",
+									"});\r",
+									"\r",
+									"//max count\r",
+									"pm.test(\"Message is correct\", function () {\r",
+									"    pm.expect(jsonResponse.message).to.eql(message);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "query",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "partyType",
+									"value": "{{partyType}}",
+									"type": "text"
+								},
+								{
+									"key": "fullSimilarity",
+									"value": "{{fullSimilarity}}",
+									"type": "text"
+								},
+								{
+									"key": "include",
+									"value": "{{include}}",
+									"type": "text"
+								},
+								{
+									"key": "maxCount",
+									"value": "{{maxCount}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/rest/magicsearch",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"rest",
+								"magicsearch"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3 response 455",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//query for search\r",
+									"let query_array = [\"fffffffffffffffffffff\"];\r",
+									"// let name_array_old = [\"Анна\", \"Иван\", \"Кирилл\", \"Саша\", \"Карина\", \"Матвей\"];\r",
+									"let query = query_array[Math.floor(Math.random() * query_array.length)];\r",
+									"pm.environment.set(\"query\", query);\r",
+									"console.log(query);\r",
+									"\r",
+									"//partyType for search\r",
+									"let partyType_array = [\"USER\", \"COMPANY\"];\r",
+									"let partyType = partyType_array[Math.floor(Math.random() * partyType_array.length)];\r",
+									"pm.environment.set(\"partyType\", partyType);\r",
+									"console.log(partyType);\r",
+									"\r",
+									"//fullSimilarity\r",
+									"let fullSimilarity_array = [\"True\"];\r",
+									"let fullSimilarity = fullSimilarity_array[Math.floor(Math.random() * fullSimilarity_array.length)];\r",
+									"pm.environment.set(\"fullSimilarity\", fullSimilarity);\r",
+									"console.log(fullSimilarity);\r",
+									"\r",
+									"//include\r",
+									"let include_array =  [\"ALL\", \"USER\", \"COMPANY\", \"TASK\", \"WHY\"];\r",
+									"let include = include_array[Math.floor(Math.random() * include_array.length)];\r",
+									"pm.environment.set(\"include\", include);\r",
+									"console.log(include);\r",
+									"\r",
+									"//maxcount\r",
+									"let maxcount = Math.floor((Math.random()*29) + 1);\r",
+									"pm.environment.set(\"maxcount\", maxcount);\r",
+									"console.log(maxcount);\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//parse JSON\r",
+									"let jsonResponse = pm.response.json();\r",
+									"console.log(jsonResponse);\r",
+									"\r",
+									"let message = \"Не найден обязательный параметр query\";\r",
+									"\r",
+									"//response is json\r",
+									"pm.test(\"The body of the response is a valid JSON\", function () {\r",
+									"    pm.response.to.be.json;\r",
+									"});\r",
+									"\r",
+									"//status code is 455\r",
+									"pm.test(\"Status code is 455\", function () {\r",
+									"    pm.response.to.have.status(455);\r",
+									"});\r",
+									"\r",
+									"//max count\r",
+									"pm.test(\"Message is correct\", function () {\r",
+									"    pm.expect(jsonResponse.message).to.eql(message);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"query\": \"Cat\",\r\n    \"partyType\": \"{{partyType}}\",\r\n    \"fullSimilarity\": {{fullSimilarity}},\r\n    \"include\": {{include}},\r\n    \"maxCount\": {{maxcount}}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/rest/magicsearch",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"rest",
+								"magicsearch"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4 response 457",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//query for search\r",
+									"let query_array = [\"fffffffffffffffffffff\"];\r",
+									"// let name_array_old = [\"Анна\", \"Иван\", \"Кирилл\", \"Саша\", \"Карина\", \"Матвей\"];\r",
+									"let query = query_array[Math.floor(Math.random() * query_array.length)];\r",
+									"pm.environment.set(\"query\", query);\r",
+									"console.log(query);\r",
+									"\r",
+									"//partyType for search\r",
+									"let partyType_array = [\"Man\", \"Woman\"];\r",
+									"let partyType = partyType_array[Math.floor(Math.random() * partyType_array.length)];\r",
+									"pm.environment.set(\"partyType\", partyType);\r",
+									"console.log(partyType);\r",
+									"\r",
+									"//fullSimilarity\r",
+									"let fullSimilarity_array = [\"True\"];\r",
+									"let fullSimilarity = fullSimilarity_array[Math.floor(Math.random() * fullSimilarity_array.length)];\r",
+									"pm.environment.set(\"fullSimilarity\", fullSimilarity);\r",
+									"console.log(fullSimilarity);\r",
+									"\r",
+									"//include\r",
+									"let include_array =  [\"ALL\", \"USER\", \"COMPANY\", \"TASK\", \"WHY\"];\r",
+									"let include = include_array[Math.floor(Math.random() * include_array.length)];\r",
+									"pm.environment.set(\"include\", include);\r",
+									"console.log(include);\r",
+									"\r",
+									"//maxcount\r",
+									"let maxcount = Math.floor((Math.random()*29) + 1);\r",
+									"pm.environment.set(\"maxcount\", maxcount);\r",
+									"console.log(maxcount);\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let jsonResponse = pm.response.json();\r",
+									"console.log(jsonResponse);\r",
+									"let message = \"Параметр partyType может принимать только значения: ALL,USER, COMPANY\";\r",
+									"\r",
+									"//response is json\r",
+									"pm.test(\"The body of the response is a valid JSON\", function () {\r",
+									"    pm.response.to.be.json;\r",
+									"});\r",
+									"\r",
+									"//status code is 457\r",
+									"pm.test(\"Status code is 457\", function () {\r",
+									"    pm.response.to.have.status(457);\r",
+									"});\r",
+									"\r",
+									"//max count\r",
+									"pm.test(\"Message is correct\", function () {\r",
+									"    pm.expect(jsonResponse.message).to.eql(message);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "query",
+									"value": "{{query}}",
+									"type": "text"
+								},
+								{
+									"key": "partyType",
+									"value": "{{partyType}}",
+									"type": "text"
+								},
+								{
+									"key": "fullSimilarity",
+									"value": "{{fullSimilarity}}",
+									"type": "text"
+								},
+								{
+									"key": "include",
+									"value": "{{include}}",
+									"type": "text"
+								},
+								{
+									"key": "maxCount",
+									"value": "{{maxCount}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/rest/magicsearch",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"rest",
+								"magicsearch"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "5 response 459",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//query for search\r",
+									"let query_array = [\"fffffffffffffffffffff\"];\r",
+									"// let name_array_old = [\"Анна\", \"Иван\", \"Кирилл\", \"Саша\", \"Карина\", \"Матвей\"];\r",
+									"let query = query_array[Math.floor(Math.random() * query_array.length)];\r",
+									"pm.environment.set(\"query\", query);\r",
+									"console.log(query);\r",
+									"\r",
+									"//partyType for search\r",
+									"let partyType_array = [\"USER\", \"COMPANY\"];\r",
+									"let partyType = partyType_array[Math.floor(Math.random() * partyType_array.length)];\r",
+									"pm.environment.set(\"partyType\", partyType);\r",
+									"console.log(partyType);\r",
+									"\r",
+									"//fullSimilarity\r",
+									"let fullSimilarity_array = [\"True\"];\r",
+									"let fullSimilarity = fullSimilarity_array[Math.floor(Math.random() * fullSimilarity_array.length)];\r",
+									"pm.environment.set(\"fullSimilarity\", fullSimilarity);\r",
+									"console.log(fullSimilarity);\r",
+									"\r",
+									"//include\r",
+									"let include_array =  [\"ALL1\", \"USER1\", \"COMPANY1\", \"TASK1\", \"WHY1\"];\r",
+									"let include = include_array[Math.floor(Math.random() * include_array.length)];\r",
+									"pm.environment.set(\"include\", include);\r",
+									"console.log(include);\r",
+									"\r",
+									"//maxcount\r",
+									"let maxcount = Math.floor((Math.random()*29) + 1);\r",
+									"pm.environment.set(\"maxcount\", maxcount);\r",
+									"console.log(maxcount);\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let jsonResponse = pm.response.json();\r",
+									"console.log(jsonResponse);\r",
+									"let message = \"Параметр include может принимать только значения: ALL, USER, COMPANY, TASK, WHY\";\r",
+									"\r",
+									"//response is json\r",
+									"pm.test(\"The body of the response is a valid JSON\", function () {\r",
+									"    pm.response.to.be.json;\r",
+									"});\r",
+									"\r",
+									"//status code is 459\r",
+									"pm.test(\"Status code is 459\", function () {\r",
+									"    pm.response.to.have.status(459);\r",
+									"});\r",
+									"\r",
+									"//max count\r",
+									"pm.test(\"Message is correct\", function () {\r",
+									"    pm.expect(jsonResponse.message).to.eql(message);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "query",
+									"value": "{{query}}",
+									"type": "text"
+								},
+								{
+									"key": "partyType",
+									"value": "{{partyType}}",
+									"type": "text"
+								},
+								{
+									"key": "fullSimilarity",
+									"value": "{{fullSimilarity}}",
+									"type": "text"
+								},
+								{
+									"key": "include",
+									"value": "{{include}}",
+									"type": "text"
+								},
+								{
+									"key": "maxCount",
+									"value": "{{maxCount}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/rest/magicsearch",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"rest",
+								"magicsearch"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "6 response 458",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//query for search\r",
+									"let query_array = [\"fffffffffffffffffffff\"];\r",
+									"// let name_array_old = [\"Анна\", \"Иван\", \"Кирилл\", \"Саша\", \"Карина\", \"Матвей\"];\r",
+									"let query = query_array[Math.floor(Math.random() * query_array.length)];\r",
+									"pm.environment.set(\"query\", query);\r",
+									"console.log(query);\r",
+									"\r",
+									"//partyType for search\r",
+									"let partyType_array = [\"USER\", \"COMPANY\"];\r",
+									"let partyType = partyType_array[Math.floor(Math.random() * partyType_array.length)];\r",
+									"pm.environment.set(\"partyType\", partyType);\r",
+									"console.log(partyType);\r",
+									"\r",
+									"//taskStatus \r",
+									"let taskStatus_array = [\"ALL1\", \"ACTUAL1\", \"COMPLETE1\",\"FAIL1\"];\r",
+									"let taskStatus  = taskStatus_array[Math.floor(Math.random() * taskStatus_array.length)];\r",
+									"pm.environment.set(\"taskStatus\", taskStatus);\r",
+									"console.log(taskStatus);\r",
+									"\r",
+									"//include\r",
+									"let include_array =  [\"ALL\", \"USER\", \"COMPANY\", \"TASK\", \"WHY\"];\r",
+									"let include = include_array[Math.floor(Math.random() * include_array.length)];\r",
+									"pm.environment.set(\"include\", include);\r",
+									"console.log(include);\r",
+									"\r",
+									"//maxcount\r",
+									"let maxcount = Math.floor((Math.random()*29) + 1);\r",
+									"pm.environment.set(\"maxcount\", maxcount);\r",
+									"console.log(maxcount);\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let jsonResponse = pm.response.json();\r",
+									"console.log(jsonResponse);\r",
+									"let message = \"Параметр taskStatus может принимать только значения: ALL, ACTUAL, COMPLETE, FAIL\";\r",
+									"\r",
+									"//response is json\r",
+									"pm.test(\"The body of the response is a valid JSON\", function () {\r",
+									"    pm.response.to.be.json;\r",
+									"});\r",
+									"\r",
+									"//status code is 458\r",
+									"pm.test(\"Status code is 458\", function () {\r",
+									"    pm.response.to.have.status(458);\r",
+									"});\r",
+									"\r",
+									"//max count\r",
+									"pm.test(\"Message is correct\", function () {\r",
+									"    pm.expect(jsonResponse.message).to.eql(message);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "query",
+									"value": "{{query}}",
+									"type": "text"
+								},
+								{
+									"key": "partyType",
+									"value": "{{partyType}}",
+									"type": "text"
+								},
+								{
+									"key": "taskStatus",
+									"value": "{{taskStatus}}",
+									"type": "text"
+								},
+								{
+									"key": "include",
+									"value": "{{include}}",
+									"type": "text"
+								},
+								{
+									"key": "maxCount",
+									"value": "{{maxCount}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/rest/magicsearch",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"rest",
+								"magicsearch"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "7 response 232",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//query for search\r",
+									"let query_array = [\"О\"];\r",
+									"// let name_array_old = [\"Анна\", \"Иван\", \"Кирилл\", \"Саша\", \"Карина\", \"Матвей\"];\r",
+									"let query = query_array[Math.floor(Math.random() * query_array.length)];\r",
+									"pm.environment.set(\"query\", query);\r",
+									"console.log(query);\r",
+									"\r",
+									"//partyType for search\r",
+									"let partyType_array = [\"USER\", \"USER\"];\r",
+									"let partyType = partyType_array[Math.floor(Math.random() * partyType_array.length)];\r",
+									"pm.environment.set(\"partyType\", partyType);\r",
+									"console.log(partyType);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//parse JSON\r",
+									"let jsonResponse = pm.response.json();\r",
+									"console.log(jsonResponse);\r",
+									"\r",
+									"//response is json\r",
+									"pm.test(\"The body of the response is a valid JSON\", function () {\r",
+									"    pm.response.to.be.json;\r",
+									"});\r",
+									"\r",
+									"//status code is 232\r",
+									"pm.test(\"Status code is 232\", function () {\r",
+									"    pm.response.to.have.status(232);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "query",
+									"value": "{{query}}",
+									"type": "text"
+								},
+								{
+									"key": "partyType",
+									"value": "{{partyType}}",
+									"type": "text"
+								},
+								{
+									"key": "include",
+									"value": "COMPANY",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/rest/magicsearch",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"rest",
+								"magicsearch"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "8 response 234",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//query for search\r",
+									"let query_array = [\"В\"];\r",
+									"let query = query_array[Math.floor(Math.random() * query_array.length)];\r",
+									"pm.environment.set(\"query\", query);\r",
+									"console.log(query);\r",
+									"\r",
+									"//partyType for search\r",
+									"let partyType_array = [\"COMPANY\", \"COMPANY\"];\r",
+									"let partyType = partyType_array[Math.floor(Math.random() * partyType_array.length)];\r",
+									"pm.environment.set(\"partyType\", partyType);\r",
+									"console.log(partyType);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//parse JSON\r",
+									"let jsonResponse = pm.response.json();\r",
+									"console.log(jsonResponse);\r",
+									"\r",
+									"//response is json\r",
+									"pm.test(\"The body of the response is a valid JSON\", function () {\r",
+									"    pm.response.to.be.json;\r",
+									"});\r",
+									"\r",
+									"//status code is 234\r",
+									"pm.test(\"Status code is 234\", function () {\r",
+									"    pm.response.to.have.status(234);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "query",
+									"value": "{{query}}",
+									"type": "text"
+								},
+								{
+									"key": "partyType",
+									"value": "{{partyType}}",
+									"type": "text"
+								},
+								{
+									"key": "fullSimilarity",
+									"value": "true",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/rest/magicsearch",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"rest",
+								"magicsearch"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "9 response 231",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//query for search\r",
+									"let query_array = [\"Ж\"];\r",
+									"let query = query_array[Math.floor(Math.random() * query_array.length)];\r",
+									"pm.environment.set(\"query\", query);\r",
+									"console.log(query);\r",
+									"\r",
+									"//partyType for search\r",
+									"let partyType_array = [\"USER\", \"USER\"];\r",
+									"let partyType = partyType_array[Math.floor(Math.random() * partyType_array.length)];\r",
+									"pm.environment.set(\"partyType\", partyType);\r",
+									"console.log(partyType);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//parse JSON\r",
+									"let jsonResponse = pm.response.json();\r",
+									"console.log(jsonResponse);\r",
+									"\r",
+									"//response is json\r",
+									"pm.test(\"The body of the response is a valid JSON\", function () {\r",
+									"    pm.response.to.be.json;\r",
+									"});\r",
+									"\r",
+									"//status code is 231\r",
+									"pm.test(\"Status code is 231\", function () {\r",
+									"    pm.response.to.have.status(231);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "query",
+									"value": "{{query}}",
+									"type": "text"
+								},
+								{
+									"key": "partyType",
+									"value": "{{partyType}}",
+									"type": "text"
+								},
+								{
+									"key": "fullSimilarity",
+									"value": "true",
+									"type": "text"
+								},
+								{
+									"key": "include",
+									"value": "TASK",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/rest/magicsearch",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"rest",
+								"magicsearch"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "10 response 233",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//query for search\r",
+									"let query_array = [\"Ж\"];\r",
+									"let query = query_array[Math.floor(Math.random() * query_array.length)];\r",
+									"pm.environment.set(\"query\", query);\r",
+									"console.log(query);\r",
+									"\r",
+									"//partyType for search\r",
+									"let partyType_array = [\"COMPANY\", \"COMPANY\"];\r",
+									"let partyType = partyType_array[Math.floor(Math.random() * partyType_array.length)];\r",
+									"pm.environment.set(\"partyType\", partyType);\r",
+									"console.log(partyType);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//parse JSON\r",
+									"let jsonResponse = pm.response.json();\r",
+									"console.log(jsonResponse);\r",
+									"\r",
+									"//response is json\r",
+									"pm.test(\"The body of the response is a valid JSON\", function () {\r",
+									"    pm.response.to.be.json;\r",
+									"});\r",
+									"\r",
+									"//status code is 233\r",
+									"pm.test(\"Status code is 233\", function () {\r",
+									"    pm.response.to.have.status(233);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "query",
+									"value": "{{query}}",
+									"type": "text"
+								},
+								{
+									"key": "partyType",
+									"value": "{{partyType}}",
+									"type": "text"
+								},
+								{
+									"key": "fullSimilarity",
+									"value": "false",
+									"type": "text"
+								},
+								{
+									"key": "include",
+									"value": "COMPANY",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/rest/magicsearch",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"rest",
+								"magicsearch"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "11 response 235",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//query for search\r",
+									"let query_array = [\"Р\"];\r",
+									"let query = query_array[Math.floor(Math.random() * query_array.length)];\r",
+									"pm.environment.set(\"query\", query);\r",
+									"console.log(query);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//parse JSON\r",
+									"let jsonResponse = pm.response.json();\r",
+									"console.log(jsonResponse);\r",
+									"\r",
+									"//response is json\r",
+									"pm.test(\"The body of the response is a valid JSON\", function () {\r",
+									"    pm.response.to.be.json;\r",
+									"});\r",
+									"\r",
+									"//status code is 235\r",
+									"pm.test(\"Status code is 235\", function () {\r",
+									"    pm.response.to.have.status(235);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "query",
+									"value": "{{query}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/rest/magicsearch",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"rest",
+								"magicsearch"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "6_1 Do register",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var a = \"olya_test\";\r",
+							"var c = \"@test.com\";\r",
+							"var d = \"Olya_\"\r",
+							"var b = Math.floor(Math.random()*1000);\r",
+							"\r",
+							"function randomEmail() {\r",
+							"    return a + b + c;\r",
+							"}\r",
+							"\r",
+							"function randomName() {\r",
+							"    return d + b;\r",
+							"}\r",
+							"\r",
+							"var email = randomEmail();\r",
+							"var name = randomName();\r",
+							"\r",
+							"pm.environment.set(\"email\", email);\r",
+							"pm.environment.set(\"name\", name);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();\r",
+							"var email = pm.variables.get(\"email\");\r",
+							"var name = pm.variables.get(\"name\");\r",
+							"console.log(email);\r",
+							"\r",
+							"//status and code\r",
+							"pm.test(\"Status is ok\", function () {\r",
+							"    pm.response.to.be.ok;  \r",
+							"});\r",
+							"//\r",
+							"pm.test(\"response is json\", function () {\r",
+							"    pm.response.to.be.json;  \r",
+							"});\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"//email\r",
+							"pm.test(\"User created with email: \" + jsonData.email + \" = \" + email, function () {\r",
+							"    pm.expect(jsonData.email).to.equal(email);\r",
+							"});\r",
+							"\r",
+							"//user name\r",
+							"pm.test(\"User created with name: \" + jsonData.name + \" = \" + name, function () {\r",
+							"    pm.expect(jsonData.name).to.equal(name);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "{{email}}",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "{{name}}",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{URL}}/rest/doregister",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"rest",
+						"doregister"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "6_2 Do register Owner",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var a = \"olya_test_owner\";\r",
+							"var c = \"@test.com\";\r",
+							"var d = \"Olya_Owner\"\r",
+							"var b = Math.floor(Math.random()*1000);\r",
+							"\r",
+							"function randomEmail() {\r",
+							"    return a + b + c;\r",
+							"}\r",
+							"\r",
+							"function randomName() {\r",
+							"    return d + b;\r",
+							"}\r",
+							"\r",
+							"let email_owner = randomEmail();\r",
+							"let name_owner = randomName();\r",
+							"\r",
+							"pm.environment.set(\"email_owner\", email_owner);\r",
+							"pm.environment.set(\"name_owner\", name_owner);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();\r",
+							"var email_owner = pm.variables.get(\"email_owner\");\r",
+							"var name_owner = pm.variables.get(\"name_owner\");\r",
+							"console.log(email_owner);\r",
+							"\r",
+							"//status and code\r",
+							"pm.test(\"Status is ok\", function () {\r",
+							"    pm.response.to.be.ok;  \r",
+							"});\r",
+							"//\r",
+							"pm.test(\"response is json\", function () {\r",
+							"    pm.response.to.be.json;  \r",
+							"});\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"//email\r",
+							"pm.test(\"User created with email: \" + jsonData.email + \" = \" + email_owner, function () {\r",
+							"    pm.expect(jsonData.email).to.equal(email_owner);\r",
+							"});\r",
+							"\r",
+							"//user name\r",
+							"pm.test(\"User created with name: \" + jsonData.name + \" = \" + name_owner, function () {\r",
+							"    pm.expect(jsonData.name).to.equal(name_owner);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "{{email_owner}}",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "{{name_owner}}",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{URL}}/rest/doregister",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"rest",
+						"doregister"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "6_3 One field change",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"let fields = [\"hobby\", \"adres\", \"name1\", \"surname1\", \"fathername1\", \"cat\", \"dog\", \"parrot\", \"cavy\", \"hamster\", \"squirrel\", \"phone\", \"inn\", \"gender\", \"birthday\"];\r",
+							"let values = [\"my\", \"dear\", \"i\", \"want\", \"to\", \"hug\", \"you\", \"hard\"];\r",
+							"\r",
+							"//randomizer\r",
+							"function randomValue(array) {\r",
+							"    return array[Math.floor(Math.random() * array.length)];\r",
+							"}\r",
+							"\r",
+							"let random_field = randomValue(fields);\r",
+							"let random_value = randomValue(values);\r",
+							"\r",
+							"pm.environment.set(\"field\", random_field);\r",
+							"pm.environment.set(\"value\", random_value);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//parse JSON\r",
+							"let jsonResponse = pm.response.json();\r",
+							"console.log(jsonResponse);\r",
+							"let field = pm.variables.get(\"field\");\r",
+							"let value = pm.variables.get(\"value\");\r",
+							"let email = pm.variables.get(\"email\");\r",
+							"let message = \"Поле \" + field + \" успешно изменено на \" + value + \" у пользователя с email \" + email;\r",
+							"console.log(message);\r",
+							"\r",
+							"//response is json\r",
+							"pm.test(\"The body of the response is a valid JSON\", function () {\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"//status code is 200\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"//status type is error\r",
+							"pm.test(\"Status type is error\", function () {\r",
+							"    pm.expect(jsonResponse.type).to.eql(\"error\");\r",
+							"});\r",
+							"\r",
+							"//Message is correct\r",
+							"pm.test(\"Message is correct\", function () {\r",
+							"    pm.expect(jsonResponse.message).to.eql(message);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "{{email}}",
+							"type": "text"
+						},
+						{
+							"key": "field",
+							"value": "{{field}}",
+							"type": "text"
+						},
+						{
+							"key": "value",
+							"value": "{{value}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{URL}}/rest/useronefield",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"rest",
+						"useronefield"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "6_4 Get user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//parse JSON\r",
+							"let jsonResponse = pm.response.json();\r",
+							"console.log(jsonResponse);\r",
+							"\r",
+							"let field = pm.variables.get(\"field\");\r",
+							"let value = pm.variables.get(\"value\");\r",
+							"let email = pm.variables.get(\"email\");\r",
+							"let name = pm.variables.get(\"name\");\r",
+							"\r",
+							"//response is json\r",
+							"pm.test(\"The body of the response is a valid JSON\", function () {\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"//status code is 200\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"//response name\r",
+							"pm.test(\"Name is correct\", function () {\r",
+							"    pm.expect(jsonResponse.name).to.eql(name);\r",
+							"});\r",
+							"\r",
+							"//response email\r",
+							"pm.test(\"Email is correct\", function () {\r",
+							"    pm.expect(jsonResponse.email).to.eql(email);\r",
+							"});\r",
+							"\r",
+							"//response field\r",
+							"pm.test(\"Field \" + field + \" is correct\", function () {\r",
+							"    pm.expect(jsonResponse[field]).to.eql(value);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "{{email}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{URL}}/rest/getuser",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"rest",
+						"getuser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "6_5 Create first company",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"let names = [\"One Little Company\", \"Big Very Big\", \"Google\"];\r",
+							"let types = [\"ООО\", \"ОАО\"];\r",
+							"\r",
+							"//randomizer\r",
+							"function randomValue(array) {\r",
+							"    return array[Math.floor(Math.random() * array.length)];\r",
+							"}\r",
+							"\r",
+							"let name_company_one = randomValue(names);\r",
+							"let type_company_one = randomValue(types);\r",
+							"\r",
+							"pm.environment.set(\"name_company_one\", name_company_one);\r",
+							"pm.environment.set(\"type_company_one\", type_company_one);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//parse JSON\r",
+							"let jsonResponse = pm.response.json();\r",
+							"console.log(jsonResponse);\r",
+							"let id_company_one = jsonResponse.id_company;\r",
+							"pm.environment.set(\"id_company_one\", id_company_one);\r",
+							"\r",
+							"let name_company_one = pm.variables.get(\"name_company_one\");\r",
+							"let type_company_one = pm.variables.get(\"type_company_one\");\r",
+							"let email = pm.variables.get(\"email\");\r",
+							"\r",
+							"//response is json\r",
+							"pm.test(\"The body of the response is a valid JSON\", function () {\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"//status code is 200\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"//success\r",
+							"pm.test(\"Test is success\", function () {\r",
+							"    pm.expect(jsonResponse.type).to.eql(\"success\")\r",
+							"});\r",
+							"\r",
+							"//response name\r",
+							"pm.test(\"Name is correct\", function () {\r",
+							"    pm.expect(jsonResponse.company.name).to.eql(name_company_one);\r",
+							"});\r",
+							"\r",
+							"//response type\r",
+							"pm.test(\"Type is correct\", function () {\r",
+							"    pm.expect(jsonResponse.company.type).to.eql(type_company_one);\r",
+							"});\r",
+							"\r",
+							"//response user\r",
+							"pm.test(\"User is correct\", function () {\r",
+							"    pm.expect(jsonResponse.company.users[0]).to.eql(email);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"company_name\": \"{{name_company_one}}\",\r\n  \"company_type\": \"{{type_company_one}}\",\r\n  \"company_users\": [\"{{email}}\"],\r\n  \"email_owner\": \"{{email_owner}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/rest/createcompany",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"rest",
+						"createcompany"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "7_1 Create Task",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"let titles = [\"All the things she said\", \"Running through my head\", \"This is not enough!\"];\r",
+							"let descriptions = [\"Cause I'm feeling for her\", \"What she's feeling for me\", \"I can try to pretend\", \"I can try to forget\", \"But it's driving me mad\", \"Going out of my head\"];\r",
+							"\r",
+							"//randomizer\r",
+							"function randomValue(array) {\r",
+							"    return array[Math.floor(Math.random() * array.length)];\r",
+							"}\r",
+							"\r",
+							"let title = randomValue(titles);\r",
+							"let description = randomValue(descriptions);\r",
+							"\r",
+							"pm.environment.set(\"title\", title);\r",
+							"pm.environment.set(\"description\", description);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//parse JSON\r",
+							"let jsonResponse = pm.response.json();\r",
+							"console.log(jsonResponse);\r",
+							"let id_task = jsonResponse.id_task;\r",
+							"pm.environment.set(\"id_task\", id_task);\r",
+							"let message = \"Задача успешно создана!\";\r",
+							"\r",
+							"//response is json\r",
+							"pm.test(\"The body of the response is a valid JSON\", function () {\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"//status code is 200\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"//success\r",
+							"pm.test(\"Test is success\", function () {\r",
+							"    pm.expect(jsonResponse.type).to.eql(\"success\")\r",
+							"});\r",
+							"\r",
+							"//message is correct\r",
+							"pm.test(\"Message is correct\", function () {\r",
+							"    pm.expect(jsonResponse.message).to.eql(message)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"task_title\": \"{{title}}\",\r\n    \"task_description\": \"{{description}}\",\r\n    \"email_owner\": \"{{email_owner}}\",\r\n    \"email_assign\": \"{{email}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://users.bugred.ru/tasks/rest/createtask",
+					"protocol": "http",
+					"host": [
+						"users",
+						"bugred",
+						"ru"
+					],
+					"path": [
+						"tasks",
+						"rest",
+						"createtask"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "7_2 Add task in Cron",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"//randomizer\r",
+							"function randomHours() {\r",
+							"    return Math.floor(Math.random() * 24);\r",
+							"}\r",
+							"\r",
+							"function randomMinutes() {\r",
+							"    return Math.floor(Math.random() * 60);\r",
+							"}\r",
+							"\r",
+							"function randomMonth() {\r",
+							"    return Math.floor(Math.random() * 11) + 1;\r",
+							"}\r",
+							"\r",
+							"function randomDay() {\r",
+							"    return Math.floor(Math.random() * 30) + 1;\r",
+							"}\r",
+							"\r",
+							"function randomDayWeeks() {\r",
+							"    return Math.floor(Math.random() * 6) + 1;\r",
+							"}\r",
+							"\r",
+							"let hours = randomHours();\r",
+							"let minute = randomMinutes();\r",
+							"let month = randomMonth();\r",
+							"let day = randomDay();\r",
+							"let day_week = randomDayWeeks();\r",
+							"\r",
+							"pm.environment.set(\"hours\", hours);\r",
+							"pm.environment.set(\"minute\", minute);\r",
+							"pm.environment.set(\"month\", month);\r",
+							"pm.environment.set(\"day\", day);\r",
+							"pm.environment.set(\"day_week\", day_week);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//parse JSON\r",
+							"let jsonResponse = pm.response.json();\r",
+							"console.log(jsonResponse);\r",
+							"let id = pm.variables.get(\"id_task\");\r",
+							"let month = pm.variables.get(\"month\");\r",
+							"if (month  < 10) { month = \"0\" + month};\r",
+							"let day = pm.variables.get(\"day\");\r",
+							"if (day  < 10) { day = \"0\" + day};\r",
+							"let hours = pm.variables.get(\"hours\");\r",
+							"if (hours  < 10) { hours = \"0\" + hours};\r",
+							"let minute = pm.variables.get(\"minute\");\r",
+							"if (minute  < 10) { minute = \"0\" + minute};\r",
+							"\r",
+							"let message = \"Расписание успешно добавлено в задачу \" + id + \" Следущая дата запуска \" + day + \".\" + month + \".2022 \" + hours + \":\" + minute;\r",
+							"\r",
+							"//response is json\r",
+							"pm.test(\"The body of the response is a valid JSON\", function () {\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"//status code is 200\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"//success\r",
+							"pm.test(\"Test is success\", function () {\r",
+							"    pm.expect(jsonResponse.type).to.eql(\"success\")\r",
+							"});\r",
+							"\r",
+							"//message one - task and date is correct\r",
+							"pm.test(\"Message task and date is correct\", function () {\r",
+							"    pm.expect(jsonResponse.message).to.eql(message)\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email_owner",
+							"value": "{{email_owner}}",
+							"type": "text"
+						},
+						{
+							"key": "task_id",
+							"value": "{{id_task}}",
+							"type": "text"
+						},
+						{
+							"key": "hours",
+							"value": "{{hours}}",
+							"type": "text"
+						},
+						{
+							"key": "minutes",
+							"value": "{{minute}}",
+							"type": "text"
+						},
+						{
+							"key": "month",
+							"value": "{{month}}",
+							"type": "text"
+						},
+						{
+							"key": "days",
+							"value": "{{day}}",
+							"type": "text"
+						},
+						{
+							"key": "day_weeks",
+							"value": "*",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{URL}}/rest/addtaskincron",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"rest",
+						"addtaskincron"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "8_1 Add Avatar",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//parse JSON\r",
+							"let jsonResponse = pm.response.json();\r",
+							"\r",
+							"//response is json\r",
+							"pm.test(\"The body of the response is a valid JSON\", function () {\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"//status code is 200\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"//okay\r",
+							"pm.test(\"Statuc is ok\", function () {\r",
+							"    pm.expect(jsonResponse.status).to.eql(\"ok\")\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "{{email}}",
+							"type": "text"
+						},
+						{
+							"key": "avatar",
+							"type": "file",
+							"src": "avatar.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{URL}}/rest/addavatar",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"rest",
+						"addavatar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "9_1 Create second company",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"let names = [\"Second Long Company\", \"Big Company\"];\r",
+							"let types = [\"ООО\", \"ОАО\"];\r",
+							"\r",
+							"//randomizer\r",
+							"function randomValue(array) {\r",
+							"    return array[Math.floor(Math.random() * array.length)];\r",
+							"}\r",
+							"\r",
+							"let name_company_two = randomValue(names);\r",
+							"let type_company_two = randomValue(types);\r",
+							"\r",
+							"pm.environment.set(\"name_company_two\", name_company_two);\r",
+							"pm.environment.set(\"type_company_two\", type_company_two);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//parse JSON\r",
+							"let jsonResponse = pm.response.json();\r",
+							"console.log(jsonResponse);\r",
+							"let id_company_two = jsonResponse.id_company;\r",
+							"pm.environment.set(\"id_company_two\", id_company_two);\r",
+							"\r",
+							"let name_company_two = pm.variables.get(\"name_company_two\");\r",
+							"let type_company_two = pm.variables.get(\"type_company_two\");\r",
+							"let email = pm.variables.get(\"email\");\r",
+							"\r",
+							"//response is json\r",
+							"pm.test(\"The body of the response is a valid JSON\", function () {\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"//status code is 200\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"//success\r",
+							"pm.test(\"Test is success\", function () {\r",
+							"    pm.expect(jsonResponse.type).to.eql(\"success\")\r",
+							"});\r",
+							"\r",
+							"//response name\r",
+							"pm.test(\"Name is correct\", function () {\r",
+							"    pm.expect(jsonResponse.company.name).to.eql(name_company_two);\r",
+							"});\r",
+							"\r",
+							"//response type\r",
+							"pm.test(\"Type is correct\", function () {\r",
+							"    pm.expect(jsonResponse.company.type).to.eql(type_company_two);\r",
+							"});\r",
+							"\r",
+							"//response user\r",
+							"pm.test(\"User is correct\", function () {\r",
+							"    pm.expect(jsonResponse.company.users[0]).to.eql(email);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"company_name\": \"{{name_company_two}}\",\r\n  \"company_type\": \"{{type_company_two}}\",\r\n  \"company_users\": [\"{{email}}\"],\r\n  \"email_owner\": \"{{email_owner}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/rest/createcompany",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"rest",
+						"createcompany"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "9_2 Create third company",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"let names = [\"Olya Company\", \"Noname COmpany\"];\r",
+							"let types = [\"ООО\", \"ОАО\"];\r",
+							"\r",
+							"//randomizer\r",
+							"function randomValue(array) {\r",
+							"    return array[Math.floor(Math.random() * array.length)];\r",
+							"}\r",
+							"\r",
+							"let name_company_three = randomValue(names);\r",
+							"let type_company_three = randomValue(types);\r",
+							"\r",
+							"pm.environment.set(\"name_company_three\", name_company_three);\r",
+							"pm.environment.set(\"type_company_three\", type_company_three);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//parse JSON\r",
+							"let jsonResponse = pm.response.json();\r",
+							"console.log(jsonResponse);\r",
+							"let id_company_three = jsonResponse.id_company;\r",
+							"pm.environment.set(\"id_company_three\", id_company_three);\r",
+							"\r",
+							"let name_company_three = pm.variables.get(\"name_company_three\");\r",
+							"let type_company_three = pm.variables.get(\"type_company_three\");\r",
+							"let email = pm.variables.get(\"email\");\r",
+							"\r",
+							"//response is json\r",
+							"pm.test(\"The body of the response is a valid JSON\", function () {\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"//status code is 200\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"//success\r",
+							"pm.test(\"Test is success\", function () {\r",
+							"    pm.expect(jsonResponse.type).to.eql(\"success\")\r",
+							"});\r",
+							"\r",
+							"//response name\r",
+							"pm.test(\"Name is correct\", function () {\r",
+							"    pm.expect(jsonResponse.company.name).to.eql(name_company_three);\r",
+							"});\r",
+							"\r",
+							"//response type\r",
+							"pm.test(\"Type is correct\", function () {\r",
+							"    pm.expect(jsonResponse.company.type).to.eql(type_company_three);\r",
+							"});\r",
+							"\r",
+							"//response user\r",
+							"pm.test(\"User is correct\", function () {\r",
+							"    pm.expect(jsonResponse.company.users[0]).to.eql(email);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"company_name\": \"{{name_company_three}}\",\r\n  \"company_type\": \"{{type_company_three}}\",\r\n  \"company_users\": [\"{{email}}\"],\r\n  \"email_owner\": \"{{email_owner}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/rest/createcompany",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"rest",
+						"createcompany"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "9_3 Create user with task",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"//name + email\r",
+							"var a = \"new-test\";\r",
+							"var c = \"@test.by\";\r",
+							"var d = \"Start\"\r",
+							"var b = Math.floor(Math.random()*1000);\r",
+							"\r",
+							"function randomEmail() {\r",
+							"    return a + b + c;\r",
+							"}\r",
+							"\r",
+							"function randomName() {\r",
+							"    return d + b;\r",
+							"}\r",
+							"\r",
+							"var email_user_two = randomEmail();\r",
+							"var name_user_two = randomName();\r",
+							"\r",
+							"pm.environment.set(\"email_user_two\", email_user_two);\r",
+							"pm.environment.set(\"name_user_two\", name_user_two);\r",
+							"\r",
+							"//title + tasks\r",
+							"let titles1 = [\"All the things she said\", \"Running through my head\", \"This is not enough!\", \"Wait\", \"It's just about to break\", \"it's more than I can take\", \"Everything's about to change\"];\r",
+							"let descriptions1 = [\"Cause I'm feeling for her\", \"What she's feeling for me\", \"I can try to pretend\", \"I can try to forget\", \"But it's driving me mad\", \"Going out of my head\", \"I feel it in my veins\", \"it's not going away\", \"Everything about to change\", \"Come with me!\"];\r",
+							"\r",
+							"let titles2 = [\"Contemplating\", \"isolating\", \"stressing \", \"Different visions\", \"contradictions\", \"Now when you want it\"];\r",
+							"let descriptions2 = [\"Now when you need it\", \"I'm too far gone\", \"You're trying to blame me\", \"But I'm not breaking\", \"I'm telling you\", \"I'm bulletproof\", \"Believe me\", \"You're addicted and so twised\", \"Distant eyes\", \"I need a way to separate yeah\"];\r",
+							"\r",
+							"//randomizer\r",
+							"function randomValue(array) {\r",
+							"    return array[Math.floor(Math.random() * array.length)];\r",
+							"}\r",
+							"\r",
+							"let title1 = randomValue(titles1);\r",
+							"let description1 = randomValue(descriptions1);\r",
+							"\r",
+							"let title2 = randomValue(titles2);\r",
+							"let description2 = randomValue(descriptions2);\r",
+							"\r",
+							"pm.environment.set(\"title1\", title1);\r",
+							"pm.environment.set(\"description1\", description1);\r",
+							"\r",
+							"pm.environment.set(\"title2\", title2);\r",
+							"pm.environment.set(\"description2\", description2);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//parse JSON\r",
+							"let jsonResponse = pm.response.json();\r",
+							"console.log(jsonResponse);\r",
+							"\r",
+							"let name_user_two = pm.variables.get(\"name_user_two\");\r",
+							"let email_user_two = pm.variables.get(\"email_user_two\");\r",
+							"\r",
+							"//three companies for my sweet candy!\r",
+							"let name_company = [pm.variables.get(\"name_company_three\"), pm.variables.get(\"name_company_two\"), pm.variables.get(\"name_company_one\")];\r",
+							"console.log(name_company);\r",
+							"let id_company = [pm.variables.get(\"id_company_three\"), pm.variables.get(\"id_company_two\"), pm.variables.get(\"id_company_one\")];\r",
+							"console.log(id_company);\r",
+							"\r",
+							"//response is json\r",
+							"pm.test(\"The body of the response is a valid JSON\", function () {\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"//status code is 200\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"//response name\r",
+							"pm.test(\"Name is correct\", function () {\r",
+							"    pm.expect(jsonResponse.name).to.eql(name_user_two);\r",
+							"});\r",
+							"\r",
+							"//response email\r",
+							"pm.test(\"Email is correct\", function () {\r",
+							"    pm.expect(jsonResponse.email).to.eql(email_user_two);\r",
+							"});\r",
+							"\r",
+							"//response companies\r",
+							"for(let i = 0; i < 3; i++) {\r",
+							"    pm.test(\"Company name \" + (i + 1) + \" is correct\", function () {\r",
+							"        pm.expect(jsonResponse.companies[i].name).to.eql(name_company[i]);\r",
+							"    });\r",
+							"    pm.test(\"Id \" + (i + 1) + \" is correct\", function () {\r",
+							"        pm.expect(jsonResponse.companies[i].id).to.eql(id_company[i]);\r",
+							"    });\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"{{email_user_two}}\",\r\n    \"name\": \"{{name_user_two}}\",\r\n    \"tasks\": [\r\n        {\r\n            \"title\": \"{{title1}}\",\r\n            \"description\": \"{{description1}}\"\r\n        }, {\r\n            \"title\": \"{{title2}}\",\r\n            \"description\": \"{{description2}}\"\r\n        }\r\n    ],\r\n    \"companies\": [{{id_company_one}}, {{id_company_two}}, {{id_company_three}}]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/rest/createuserwithtasks",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"rest",
+						"createuserwithtasks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "After all Delete User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//convert XML to text\r",
+							"let jsonResponse = pm.response.text();\r",
+							"//console.log(jsonResponse);\r",
+							"let text = jsonResponse.split(\"message\");\r",
+							"//console.log(text);\r",
+							"let good_answer = text[1];\r",
+							"//console.log(good_answer);\r",
+							"let email = pm.variables.get(\"email\");\r",
+							"let message = \"Пользователь с email \" + email + \" успешно удален\";\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Successful delete\", function () {\r",
+							"    pm.expect(good_answer).to.include(email);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "{{email}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{URL}}\\rest\\deleteuser",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"rest",
+						"deleteuser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "After all Delete Owner User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//convert XML to text\r",
+							"let jsonResponse = pm.response.text();\r",
+							"//console.log(jsonResponse);\r",
+							"let text = jsonResponse.split(\"message\");\r",
+							"//console.log(text);\r",
+							"let good_answer = text[1];\r",
+							"//console.log(good_answer);\r",
+							"let email_owner = pm.variables.get(\"email_owner\");\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Successful delete\", function () {\r",
+							"    pm.expect(good_answer).to.include(email_owner);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "{{email_owner}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{URL}}\\rest\\deleteuser",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"rest",
+						"deleteuser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "After all Delete User Two",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//convert XML to text\r",
+							"let jsonResponse = pm.response.text();\r",
+							"//console.log(jsonResponse);\r",
+							"let text = jsonResponse.split(\"message\");\r",
+							"//console.log(text);\r",
+							"let good_answer = text[1];\r",
+							"//console.log(good_answer);\r",
+							"let email_user_two = pm.variables.get(\"email_user_two\");\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Successful delete\", function () {\r",
+							"    pm.expect(good_answer).to.include(email_user_two);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "{{email_user_two}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{URL}}\\rest\\deleteuser",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"rest",
+						"deleteuser"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
