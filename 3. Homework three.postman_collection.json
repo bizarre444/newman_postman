@@ -1061,7 +1061,7 @@
 							"script": {
 								"exec": [
 									"//query for search\r",
-									"let query_array = [\"Ж\"];\r",
+									"let query_array = [\"Б\"];\r",
 									"let query = query_array[Math.floor(Math.random() * query_array.length)];\r",
 									"pm.environment.set(\"query\", query);\r",
 									"console.log(query);\r",
@@ -1417,7 +1417,7 @@
 					"listen": "prerequest",
 					"script": {
 						"exec": [
-							"let fields = [\"hobby\", \"adres\", \"name1\", \"surname1\", \"fathername1\", \"cat\", \"dog\", \"parrot\", \"cavy\", \"hamster\", \"squirrel\", \"phone\", \"inn\", \"gender\", \"birthday\"];\r",
+							"let fields = [\"hobby\", \"adres\", \"name1\", \"surname1\", \"fathername1\", \"cat\", \"dog\", \"parrot\", \"cavy\", \"hamster\", \"squirrel\", \"phone\", \"inn\", \"gender\"];\r",
 							"let values = [\"my\", \"dear\", \"i\", \"want\", \"to\", \"hug\", \"you\", \"hard\"];\r",
 							"\r",
 							"//randomizer\r",
@@ -1815,6 +1815,7 @@
 							"//parse JSON\r",
 							"let jsonResponse = pm.response.json();\r",
 							"console.log(jsonResponse);\r",
+							"\r",
 							"let id = pm.variables.get(\"id_task\");\r",
 							"let month = pm.variables.get(\"month\");\r",
 							"if (month  < 10) { month = \"0\" + month};\r",
@@ -1824,8 +1825,12 @@
 							"if (hours  < 10) { hours = \"0\" + hours};\r",
 							"let minute = pm.variables.get(\"minute\");\r",
 							"if (minute  < 10) { minute = \"0\" + minute};\r",
+							"let year = 2022;\r",
+							"if (month <= 2 && day < 21) {\r",
+							"    year = 2023;\r",
+							"}\r",
 							"\r",
-							"let message = \"Расписание успешно добавлено в задачу \" + id + \" Следущая дата запуска \" + day + \".\" + month + \".2022 \" + hours + \":\" + minute;\r",
+							"let message = \"Расписание успешно добавлено в задачу \" + id + \" Следущая дата запуска \" + day + \".\" + month + \".\" + year + \" \" + hours + \":\" + minute;\r",
 							"\r",
 							"//response is json\r",
 							"pm.test(\"The body of the response is a valid JSON\", function () {\r",

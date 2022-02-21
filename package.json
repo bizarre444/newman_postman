@@ -1,0 +1,23 @@
+{
+    "name": "newman",
+    "version": "1.0.0",
+    "description": "newman, postman",
+    "main": "index.js",
+    "scripts": {
+        "test": "newman run '3. Homework three.postman_collection.json' --environment 'three.postman_environment.json'"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/bizarre444/newman_postman.git"
+    },
+    "keywords": [
+        "newman",
+        "postman"
+    ],
+    "author": "Olya Bizarre",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/bizarre444/newman_postman/issues"
+    },
+    "homepage": "https://github.com/bizarre444/newman_postman#readme"
+}
