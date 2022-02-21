@@ -4,7 +4,7 @@
     "description": "newman, postman",
     "main": "index.js",
     "scripts": {
-        "test": "newman run '3. Homework three.postman_collection.json' --environment 'three.postman_environment.json'"
+        "test": "newman run three.postman_collection.json --environment environment.json"
     },
     "repository": {
         "type": "git",
