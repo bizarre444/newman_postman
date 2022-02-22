@@ -1,8 +1,7 @@
 # newman_postman
 
-1. #install dependencies
-npm i
-2. #run tests
-newman run 'three.postman_collection.json' --environment 'environment.json'
-3. #run tests + html reporter
-newman run 'three.postman_collection.json' --environment 'environment.json' -r htmlextra
+1. npm i #install dependencies
+
+2. npm run test #run tests
+
+3. npm run test-report #run tests + html reporter
