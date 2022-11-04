@@ -1792,7 +1792,7 @@
                             "let today_month = today.getMonth() + 1;\r",
                             "console.log(today_day);\r",
                             "console.log(today_month);\r",
-                            "let year = 2022;\r",
+                            "let year = 2023;\r",
                             "if (month <= today_month && day < today_day) {\r",
                             "    year = 2023;\r",
                             "}\r",
