@@ -1386,7 +1386,7 @@
                     "listen": "prerequest",
                     "script": {
                         "exec": [
-                            "let fields = [\"hobby\", \"adres\", \"name1\", \"surname1\", \"fathername1\", \"cat\", \"dog\", \"parrot\", \"cavy\", \"hamster\", \"squirrel\", \"phone\", \"gender\"];\r",
+                            "let fields = [\"hobby\", \"adres\", \"name1\", \"surname1\", \"fathername1\", \"cat\", \"dog\", \"parrot\", \"cavy\", \"hamster\", \"squirrel\", \"phone\"];\r",
                             "let values = [\"my\", \"dear\", \"i\", \"want\", \"to\", \"hug\", \"you\", \"hard\"];\r",
                             "\r",
                             "//randomizer\r",

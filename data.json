@@ -1,0 +1,13 @@
+[{
+        "customerId": 9000,
+        "productId": 5
+    },
+    {
+        "customerId": 9008,
+        "productId": 6
+    },
+    {
+        "customerId": 9009,
+        "productId": 7
+    }
+]
